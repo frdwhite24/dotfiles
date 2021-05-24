@@ -1,0 +1,162 @@
+{
+	"Empty python template": {
+		"prefix":["zpython", "ilg"],
+		"body": [
+			"${1:Press 'del' then start a docstring with 3x quotation marks}",
+			"${2:Python module title}",
+			"===================",
+			"",
+			"${3:A sentence describing what is done in the python module.}",
+			"",
+			"Author: ${4:John Smith}",
+			"Filepath: ${TM_FILEPATH/[\\\\]/$1\\//g}",
+			"Date: $CURRENT_HOUR:$CURRENT_MINUTE $CURRENT_DATE-$CURRENT_MONTH_NAME_SHORT-$CURRENT_YEAR",
+			"",
+			"${1}",
+			"",
+			"# Import modules",
+			"import time",
+			"${5:import pandas as pd}",
+			"",
+			"# Start code execution timer",
+			"start_time = time.time()",
+			"",
+			"# -----------------------------------------------------------------------------",
+			"# Globals and Constants",
+			"# -----------------------------------------------------------------------------",
+			"# Here define all constants required within the script",
+			"# E.g. PILE_LENGTH = 15m",
+			"$0",
+			"",
+			"",
+			"",
+			"# -----------------------------------------------------------------------------",
+			"# General Helper Functions",
+			"# -----------------------------------------------------------------------------",
+			"# Here define all functions that are referred to in your main function",
+			"# E.g. def import_data():",
+			"#      def process_data():",
+			"#      def plot_data():",
+			"",
+			"",
+			"",
+			"",
+			"# -----------------------------------------------------------------------------",
+			"# Main Processing Function",
+			"# -----------------------------------------------------------------------------",
+			"# Here define the main function used to process",
+			"# E.g. def pile_capacity_chart():",
+			"#          import_data():",
+			"#          process_data():",
+			"#          plot_data():",
+			"",
+			"",
+			"",
+			"",
+			"if __name__ == '__main__':",
+			"    # Here call the main processing function as you would if you imported the module",
+			"    # E.g. pile_capacity_chart(file_name)",
+			"",
+			"    delta_time = time.time() - start_time",
+			"    print(f'Executed in {delta_time:.2f} sec')",
+			""
+		],
+		"description": "Insert an empty python file template"
+	},
+	"Define a function": {
+		"prefix": ["zdef", "zfunction", "ilg"],
+		"body": [
+			"def ${1:name_of_function}(${2:input_variable}: ${3:dtype}) -> ${4:output_dtype}:",
+			"    ${5:Press 'del' then start a docstring with 3x quotation marks} ${6:Description of function.}",
+			"",
+			"    Parameters",
+			"    ----------",
+			"    ${2} : ${3}",
+			"        ${7:A sentence explaining what the variable is.}",
+			"",
+			"    Returns",
+			"    -------",
+			"    ${8:output_variable_name} : ${4}",
+			"        ${9:A sentence explaining what the variable is.}",
+			"",
+			"    ${5}",
+			"    $0"
+		],
+		"description": "Sets out the ILG Digital standard for a pythonic functions"
+	},
+	"Define a class": {
+		"prefix":["zclass", "ilg"],
+		"body": [
+			"class ${1:NameOfClass}(${2:InheritanceClass}):",
+			"   ${3:Press 'del' then start a docstring with 3x quotation marks}",
+			"   Description of class object.",
+			"",
+			"",
+			"   Attributes",
+			"   ----------",
+			"   ${4:first_attribute : dtype}",
+			"       A sentence describing what the attribute is.",
+			"",
+			"   Methods",
+			"   -------",
+			"   ${5:first_method(arguments)}",
+			"      ${6:A sentence to describe what the method does.}",
+			"",
+			"   ${3}",
+			"",
+			"def __init__(self,${7:first_argument}: ${8:dtype}):",
+			"    self.name = name",
+			"    self.${7} = ${7}",
+			"",
+			"",
+			"$0"
+		],
+		"description": "Insert main processing function section header"
+	},
+	"Python module header": {
+		"prefix":["zheader", "ilg"],
+		"body":[
+			"${1:Press 'del' then start a docstring}",
+			"${2:Python module title}",
+			"===================",
+			"",
+			"${3:A sentence to describe what is done in the python module.}",
+			"",
+			"${1}",
+			"",
+			"# Import modules",
+			"$0"
+		],
+		"description": "Insert python module header"
+	},
+	"Global variables header": {
+		"prefix":["zglobals", "ilg"],
+		"body": [
+			"# -----------------------------------------------------------------------------",
+			"# Globals and Constants",
+			"# -----------------------------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert global and constants section header"
+	},
+	"General helper header": {
+		"prefix":["zgeneral", "ilg"],
+		"body": [
+			"# -----------------------------------------------------------------------------",
+			"# General Helper Functions",
+			"# -----------------------------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert general helper functions section header"
+	},
+	"Main function header": {
+		"prefix":["zmain", "ilg"],
+		"body": [
+			"# -----------------------------------------------------------------------------",
+			"# Main Processing Function",
+			"# -----------------------------------------------------------------------------",
+			"$0"
+		],
+		"description": "Insert main processing function section header"
+	}
+}

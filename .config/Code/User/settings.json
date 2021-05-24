@@ -1,0 +1,105 @@
+{
+  // VSCode setup
+  "breadcrumbs.enabled": true,
+  "files.autoSave": "off",
+  "terminal.integrated.inheritEnv": false,
+  "python.terminal.executeInFileDir": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "telemetry.enableTelemetry": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "editor.smoothScrolling": true,
+  "workbench.editor.decorations.badges": true,
+  "workbench.editor.decorations.colors": true,
+  "search.mode": "reuseEditor",
+
+  // Overall theme settings
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "monokai-charcoal (gray)",
+  "editor.rulers": [79],
+  "editor.renderWhitespace": "selection",
+  "editor.renderIndentGuides": true,
+  "editor.lineNumbers": "relative",
+
+  // Cursor
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 1,
+  "editor.multiCursorModifier": "ctrlCmd",
+
+  // Editing
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+
+  // Font styling
+  "editor.fontFamily": "Fira Code Retina",
+  "editor.fontSize": 13,
+  "editor.fontLigatures": true,
+  "editor.lineHeight": 20,
+
+  // Formatters and linting
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "python.formatting.provider": "black",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Python specific
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "[php]": {
+    "editor.tabSize": 4
+  },
+  "sourcery.token": "user_xRidoveprYSttJqAOOmQWbaXuXeppTSb8DquxOblkNhFVFH3Ct5heI9YA_E",
+  "python.showStartPage": false,
+
+  // Settings sync
+  "sync.autoDownload": false,
+  "sync.autoUpload": false,
+  "sync.gist": "e4ab383609913ce1b3abb018a2fc37c3",
+
+  // Auto features
+  "typescript.suggest.autoImports": true,
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+
+  // Other
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": true,
+  "extensions.ignoreRecommendations": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "workbench.sideBar.location": "left",
+  "liveServer.settings.donotVerifyTags": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "javascript.preferences.importModuleSpecifierEnding": "minimal",
+  "javascript.preferences.quoteStyle": "double",
+  "typescript.preferences.importModuleSpecifierEnding": "index",
+  "typescript.preferences.quoteStyle": "double",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "python.languageServer": "Pylance",
+  "color-highlight.languages": ["*"],
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "workbench.productIconTheme": "material-product-icons",
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "javascript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative"
+}
