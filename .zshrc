@@ -109,6 +109,8 @@ alias dunzo='gcm && ggl && gfa && branch-clean'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias dotman='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
+alias puffin='cd ~/Documents/work/puffin && nvm use && code .'
+alias kingfisher='cd ~/Documents/work/kingfisher && code .'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

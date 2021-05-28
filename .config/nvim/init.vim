@@ -65,13 +65,18 @@ set noerrorbells
 "
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Auto completion COC
+Plug 'HerringtonDarkholme/yats.vim'  " TS syntax highlighting
+Plug 'maxmellon/vim-jsx-pretty'  " TSX and JSX syntax highlighting
+Plug 'junegunn/fzf', {'do': {-> fzf#install()}}  " Fuzzy file searching
+Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-signify'  " Git diffs in signcolumn
+
+" Theme plugins
 " Plug 'crusoexia/vim-monokai'
 Plug 'bluz71/vim-nightfly-guicolors'
 " Plug 'joshdick/onedark.vim'
 " Plug 'raphamorim/lucario'
-Plug 'HerringtonDarkholme/yats.vim'  " TS syntax highlighting
-Plug 'maxmellon/vim-jsx-pretty'  " TSX and JSX syntax highlighting
 
 call plug#end()
 
@@ -107,10 +112,11 @@ colorscheme nightfly
 "
 " vnoremap J :m '>+1<CR>gv=gv
 " vnoremap K :m '<-2<CR>gv=gv
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>  " Move to below split
+nnoremap <C-K> <C-W><C-K>  " Move to above split
+nnoremap <C-L> <C-W><C-L>  " Move to right split
+nnoremap <C-H> <C-W><C-H>  " Move to left split
+nnoremap <C-S> :w\|bd<CR>  " Save and close current buffer
 "
 " -----------------------------------------------------------------------------
 "                                Autocommands
@@ -153,3 +159,19 @@ nmap <silent> gd <Plug>(coc-definition)
 
 " Close suggestion windows when they get stuck using double escape
 nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
+
+" -----------------------------------------------------------------------------
+"                                FZF Config
+" -----------------------------------------------------------------------------
+"
+nmap <C-p> :Files<CR>
+nmap <C-o> :Buffers<CR>
+nmap <C-g> :GitFiles<CR>
+nmap <C-e> :GitFiles?<CR>
+nmap <C-f> :Rg<CR>
+
+" -----------------------------------------------------------------------------
+"                                Signify Config
+" -----------------------------------------------------------------------------
+"
+set updatetime=100
