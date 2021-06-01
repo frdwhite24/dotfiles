@@ -114,7 +114,7 @@ colorscheme nightfly
 " vnoremap K :m '<-2<CR>gv=gv
 nnoremap <C-J> <C-W><C-J>  " Move to below split
 nnoremap <C-K> <C-W><C-K>  " Move to above split
-nnoremap <C-L> <C-W><C-L>  " Move to right split
+nnoremap <C-e> <C-W><C-L>  " Move to right split
 nnoremap <C-H> <C-W><C-H>  " Move to left split
 nnoremap <C-S> :w\|bd<CR>  " Save and close current buffer
 "
@@ -165,7 +165,7 @@ nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call co
 " -----------------------------------------------------------------------------
 "
 nmap <C-p> :Files<CR>
-nmap <C-o> :Buffers<CR>
+nmap <C-n> :Buffers<CR>
 nmap <C-g> :GitFiles<CR>
 nmap <C-e> :GitFiles?<CR>
 nmap <C-f> :Rg<CR>
