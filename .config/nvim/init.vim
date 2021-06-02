@@ -70,6 +70,7 @@ Plug 'HerringtonDarkholme/yats.vim'  " TS syntax highlighting
 Plug 'maxmellon/vim-jsx-pretty'  " TSX and JSX syntax highlighting
 Plug 'junegunn/fzf', {'do': {-> fzf#install()}}  " Fuzzy file searching
 Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'  " Emmet html/css workflow
 Plug 'mhinz/vim-signify'  " Git diffs in signcolumn
 
 " Theme plugins
