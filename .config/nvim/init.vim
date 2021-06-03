@@ -74,8 +74,8 @@ Plug 'mattn/emmet-vim'  " Emmet html/css workflow
 Plug 'mhinz/vim-signify'  " Git diffs in signcolumn
 
 " Theme plugins
-" Plug 'crusoexia/vim-monokai'
-Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'crusoexia/vim-monokai'
+" Plug 'bluz71/vim-nightfly-guicolors'
 " Plug 'joshdick/onedark.vim'
 " Plug 'raphamorim/lucario'
 
@@ -102,10 +102,10 @@ if (empty($TMUX))
 endif
 
 syntax on
-" colorscheme monokai
+colorscheme monokai
 " colorscheme onedark
 " colorscheme lucario
-colorscheme nightfly
+" colorscheme nightfly
 
 " -----------------------------------------------------------------------------
 "                                Remaps
@@ -138,6 +138,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ 'coc-json',
+  \ 'coc-css',
   \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
