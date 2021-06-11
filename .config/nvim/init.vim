@@ -72,6 +72,8 @@ Plug 'junegunn/fzf', {'do': {-> fzf#install()}}  " Fuzzy file searching
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'  " Emmet html/css workflow
 Plug 'mhinz/vim-signify'  " Git diffs in signcolumn
+Plug 'tomtom/tcomment_vim'  " Code commenting toggle
+Plug 'APZelos/blamer.nvim'  " Git blame inline
 
 " Theme plugins
 Plug 'crusoexia/vim-monokai'
@@ -165,7 +167,7 @@ nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call co
 " -----------------------------------------------------------------------------
 "                                FZF Config
 " -----------------------------------------------------------------------------
-"
+
 nmap <C-p> :Files<CR>
 nmap <C-n> :Buffers<CR>
 nmap <C-g> :GitFiles<CR>
@@ -175,5 +177,11 @@ nmap <C-f> :Rg<CR>
 " -----------------------------------------------------------------------------
 "                                Signify Config
 " -----------------------------------------------------------------------------
-"
+
 set updatetime=100
+
+" -----------------------------------------------------------------------------
+"                                Blamer Config
+" -----------------------------------------------------------------------------
+
+let g:blamer_enabled = 1
