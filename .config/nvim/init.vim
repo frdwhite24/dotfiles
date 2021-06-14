@@ -16,6 +16,7 @@
 set tabstop=2
 set expandtab
 set autoindent
+filetype plugin indent on
 
 set shiftwidth=2
 set smartindent
@@ -74,6 +75,7 @@ Plug 'mattn/emmet-vim'  " Emmet html/css workflow
 Plug 'mhinz/vim-signify'  " Git diffs in signcolumn
 Plug 'tomtom/tcomment_vim'  " Code commenting toggle
 Plug 'APZelos/blamer.nvim'  " Git blame inline
+Plug 'rust-lang/rust.vim'  " Rust vim support
 
 " Theme plugins
 Plug 'crusoexia/vim-monokai'
@@ -141,6 +143,7 @@ let g:coc_global_extensions = [
   \ 'coc-prettier',
   \ 'coc-json',
   \ 'coc-css',
+  \ 'coc-rust-analyzer',
   \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -160,6 +163,8 @@ endfunction
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
 " Close suggestion windows when they get stuck using double escape
 nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
@@ -185,3 +190,9 @@ set updatetime=100
 " -----------------------------------------------------------------------------
 
 let g:blamer_enabled = 1
+
+" -----------------------------------------------------------------------------
+"                                Rust Config
+" -----------------------------------------------------------------------------
+
+let g:rustfmt_autosave = 1  " automatic running of rustfmt on save
