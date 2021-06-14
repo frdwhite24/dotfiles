@@ -76,6 +76,9 @@ Plug 'mhinz/vim-signify'  " Git diffs in signcolumn
 Plug 'tomtom/tcomment_vim'  " Code commenting toggle
 Plug 'APZelos/blamer.nvim'  " Git blame inline
 Plug 'rust-lang/rust.vim'  " Rust vim support
+Plug 'tpope/vim-surround'  " vim.surround support
+Plug 'vim-airline/vim-airline'  " status/tabline for vim
+Plug 'vim-airline/vim-airline-themes'
 
 " Theme plugins
 Plug 'crusoexia/vim-monokai'
