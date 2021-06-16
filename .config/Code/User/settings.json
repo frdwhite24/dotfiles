@@ -94,12 +94,9 @@
   "color-highlight.languages": ["*"],
   "editor.gotoLocation.multipleDefinitions": "goto",
   "workbench.productIconTheme": "material-product-icons",
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.importModuleSpecifier": "non-relative"
 }

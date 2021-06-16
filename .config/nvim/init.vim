@@ -12,12 +12,15 @@
 "                                Basic Settings
 " -----------------------------------------------------------------------------
 
+" set leader key to spacebar
+let mapleader=" "
+
 " Display
 set tabstop=2
-set expandtab
 set autoindent
 filetype plugin indent on
 
+set expandtab
 set shiftwidth=2
 set smartindent
 set smarttab
@@ -168,10 +171,15 @@ endfunction
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> [e <Plug>(coc-diagnostic-prev)
 nmap <silent> ]e <Plug>(coc-diagnostic-next)
+nmap <leader>rn <Plug>(coc-rename)
 
 " Close suggestion windows when they get stuck using double escape
 nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
 
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " -----------------------------------------------------------------------------
 "                                FZF Config
 " -----------------------------------------------------------------------------
