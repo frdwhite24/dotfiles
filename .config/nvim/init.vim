@@ -33,6 +33,8 @@ set signcolumn=yes
 " Search
 set nohlsearch
 set incsearch
+set ignorecase
+set smartcase
 
 " Relative numbers
 set relativenumber
@@ -82,6 +84,7 @@ Plug 'rust-lang/rust.vim'  " Rust vim support
 Plug 'tpope/vim-surround'  " vim.surround support
 Plug 'vim-airline/vim-airline'  " status/tabline for vim
 Plug 'vim-airline/vim-airline-themes'
+Plug 'iloginow/vim-stylus'  " stylus syntax highlighting etc
 
 " Theme plugins
 Plug 'crusoexia/vim-monokai'
@@ -128,6 +131,8 @@ nnoremap <C-K> <C-W><C-K>  " Move to above split
 nnoremap <C-L> <C-W><C-L>  " Move to right split
 nnoremap <C-H> <C-W><C-H>  " Move to left split
 nnoremap <C-S> :w\|bd<CR>  " Save and close current buffer
+nmap sh :split<Return><C-w>w  " Split window horizontally
+nmap sv :vsplit<Return><C-w>w  " Split window vertically
 "
 " -----------------------------------------------------------------------------
 "                                Autocommands
@@ -135,6 +140,7 @@ nnoremap <C-S> :w\|bd<CR>  " Save and close current buffer
 
 " Sets tabs to be 4 spaces for python files
 autocmd FileType python setl shiftwidth=4 sts=4 ts=2 et
+autocmd FileType php setl shiftwidth=4 sts=4 ts=2 et
 
 
 " -----------------------------------------------------------------------------
@@ -150,6 +156,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-css',
   \ 'coc-rust-analyzer',
+  \ 'coc-phpls',
   \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -180,6 +187,37 @@ nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call co
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Remap <C-f> and <C-a> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <leader>j coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <leader>k coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-a>"
+  inoremap <silent><nowait><expr> <leader>j coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <leader>k coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <leader>j coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <leader>k coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-a>"
+endif
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
 " -----------------------------------------------------------------------------
 "                                FZF Config
 " -----------------------------------------------------------------------------

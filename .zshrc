@@ -105,7 +105,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias branch-clean='git branch --merged | egrep -v "(^\*|master|main|development)" | xargs git branch -d'
-alias dunzo='gcm && ggl && gfa && branch-clean'
+alias dunzom='gcm && ggl && gfa && branch-clean'
+alias dunzod='git checkout development && ggl && gfa && branch-clean'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias dotman='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
