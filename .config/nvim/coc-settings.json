@@ -9,9 +9,18 @@
     "javascriptreact",
     "typescript.tsx",
     "graphql",
-    "css"
+    "markdown",
+    "css",
+    "html",
+    "python"
   ],
   "prettier.onlyUseLocalVersion": true,
   "eslint.quiet": false,
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "python.venvPath": "",
+  "python.pythonPath": "python",
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": [
+    "-l 80"
+  ]
 }

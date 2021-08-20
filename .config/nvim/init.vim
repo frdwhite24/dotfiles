@@ -15,6 +15,9 @@
 " set leader key to spacebar
 let mapleader=" "
 
+" Spell checking
+set spelllang=en
+
 " Display
 set tabstop=2
 set autoindent
@@ -31,7 +34,7 @@ set ruler
 set signcolumn=yes
 
 " Search
-set nohlsearch
+" set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -64,6 +67,12 @@ set hidden
 " Other
 set noerrorbells
 
+" Give more space for displaying messages in command line
+set cmdheight=2
+
+" Long update time (default 4s) leads to poor UX
+set updatetime=100
+
 
 " -----------------------------------------------------------------------------
 "                                Plugins
@@ -71,26 +80,42 @@ set noerrorbells
 "
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Auto completion COC
-Plug 'HerringtonDarkholme/yats.vim'  " TS syntax highlighting
-Plug 'maxmellon/vim-jsx-pretty'  " TSX and JSX syntax highlighting
-Plug 'junegunn/fzf', {'do': {-> fzf#install()}}  " Fuzzy file searching
-Plug 'junegunn/fzf.vim'
-Plug 'mattn/emmet-vim'  " Emmet html/css workflow
-Plug 'mhinz/vim-signify'  " Git diffs in signcolumn
-Plug 'tomtom/tcomment_vim'  " Code commenting toggle
-Plug 'APZelos/blamer.nvim'  " Git blame inline
-Plug 'rust-lang/rust.vim'  " Rust vim support
-Plug 'tpope/vim-surround'  " vim.surround support
-Plug 'vim-airline/vim-airline'  " status/tabline for vim
-Plug 'vim-airline/vim-airline-themes'
-Plug 'iloginow/vim-stylus'  " stylus syntax highlighting etc
-
-" Theme plugins
-Plug 'crusoexia/vim-monokai'
-" Plug 'bluz71/vim-nightfly-guicolors'
+" Colour theme
+" Plug 'crusoexia/vim-monokai'
+Plug 'bluz71/vim-nightfly-guicolors'
 " Plug 'joshdick/onedark.vim'
 " Plug 'raphamorim/lucario'
+
+" Language server
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Auto completion COC
+Plug 'rust-lang/rust.vim'  " Rust vim support
+
+" Syntax highlighting
+Plug 'pangloss/vim-javascript'  " JS syntax highlighting
+Plug 'HerringtonDarkholme/yats.vim'  " TS syntax highlighting
+Plug 'maxmellon/vim-jsx-pretty'  " TSX and JSX syntax highlighting
+Plug 'iloginow/vim-stylus'  " stylus syntax highlighting etc
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " Python syntax
+
+"  File/code searching
+Plug 'junegunn/fzf', {'do': {-> fzf#install()}}  " Fuzzy file searching
+Plug 'junegunn/fzf.vim'
+
+" Git and coverage helpers
+Plug 'mhinz/vim-signify'  " Git diffs in signcolumn
+Plug 'APZelos/blamer.nvim'  " Git blame inline
+Plug 'ruanyl/coverage.vim'  " Coverage gutter
+
+" Workflow helpers
+Plug 'mattn/emmet-vim'  " Emmet html/css workflow
+Plug 'tomtom/tcomment_vim'  " Code commenting toggle
+Plug 'tpope/vim-surround'  " vim.surround support
+Plug 'haya14busa/is.vim'  " Improved incremental search
+Plug 'iamcco/markdown-preview.nvim'  " Markdown previews
+
+" Environment
+Plug 'vim-airline/vim-airline'  " status/tabline for vim
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -115,10 +140,10 @@ if (empty($TMUX))
 endif
 
 syntax on
-colorscheme monokai
+" colorscheme monokai
 " colorscheme onedark
 " colorscheme lucario
-" colorscheme nightfly
+colorscheme nightfly
 
 " -----------------------------------------------------------------------------
 "                                Remaps
@@ -157,6 +182,7 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-rust-analyzer',
   \ 'coc-phpls',
+  \ 'coc-pyright',
   \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -190,12 +216,12 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " Remap <C-f> and <C-a> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <leader>j coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <leader>k coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-a>"
-  inoremap <silent><nowait><expr> <leader>j coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <leader>k coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <leader>j coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <leader>k coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-a>"
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-a>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-a>"
 endif
 
 " Use K to show documentation in preview window.
@@ -258,3 +284,13 @@ let g:blamer_enabled = 1
 " -----------------------------------------------------------------------------
 
 let g:rustfmt_autosave = 1  " automatic running of rustfmt on save
+
+" -----------------------------------------------------------------------------
+"                               Coverage.vim
+" -----------------------------------------------------------------------------
+
+let g:coverage_json_report_path = 'coverage/coverage-final.json'
+let g:coverage_sign_covered = '⦿'
+let g:coverage_interval = 750
+let g:coverage_show_covered = 0
+let g:coverage_show_uncovered = 1
