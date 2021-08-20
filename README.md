@@ -11,15 +11,36 @@ This repository uses the `git --bare` approach, resources I've used include:
 
 ## Prerequisites
 
-The list below outlines the tech I have installed on my laptop, additional to the original distro.
+The list below outlines the packages I have installed on my laptop, additional to the original distro.
+
+**GUI packages**
+
+- brave-browser
+- google-chrome-stable
+- microsoft-edge-beta
+- firefox
+- slack
+- discord
+- transmission (torrent downloader)
+- aegisub (subtitle file editor)
+- typora (Markdown editor)
+- peek (Screen recorder)
+- gimp (Photo editor)
+- vlc (Video media player)
+
+**CLI packages**
 
 - zsh
-- Oh-my-zsh
-- bat
-- fzf
-- ripgrep
-- tmux
+- Oh-my-zsh (ZSH config management framework)
 - neovim
+- git-delta (Better git diffs)
+- bat (Better cat)
+- fzf (Fuzzy file finder)
+- ripgrep (Recursive directory search for Regex pattern)
+- tmux (Easy terminal sessions and windows)
+- nordvpn (VPN cli)
+- nvm (Node version manager)
+- poetry (Python environment manager)
 
 ## Installing dotfiles to other systems
 
