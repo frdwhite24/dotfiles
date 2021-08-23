@@ -73,7 +73,6 @@ set cmdheight=2
 " Long update time (default 4s) leads to poor UX
 set updatetime=100
 
-
 " -----------------------------------------------------------------------------
 "                                Plugins
 " -----------------------------------------------------------------------------
@@ -167,130 +166,8 @@ nmap sv :vsplit<Return><C-w>w  " Split window vertically
 autocmd FileType python setl shiftwidth=4 sts=4 ts=2 et
 autocmd FileType php setl shiftwidth=4 sts=4 ts=2 et
 
-
-" -----------------------------------------------------------------------------
-"                                COC Config
-" -----------------------------------------------------------------------------
-"
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
-  \ 'coc-prettier',
-  \ 'coc-json',
-  \ 'coc-css',
-  \ 'coc-rust-analyzer',
-  \ 'coc-phpls',
-  \ 'coc-pyright',
-  \ ]
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr><TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<TAB>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> [e <Plug>(coc-diagnostic-prev)
-nmap <silent> ]e <Plug>(coc-diagnostic-next)
-nmap <leader>rn <Plug>(coc-rename)
-
-" Close suggestion windows when they get stuck using double escape
-nnoremap <silent> <ESC><ESC> :nohlsearch \| match none \| 2match none \| call coc#float#close_all()<CR>
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Remap <C-f> and <C-a> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-a>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-a>"
-endif
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" -----------------------------------------------------------------------------
-"                                FZF Config
-" -----------------------------------------------------------------------------
-
-nmap <C-p> :Files<CR>
-nmap <C-n> :Buffers<CR>
-nmap <C-g> :GitFiles<CR>
-nmap <C-e> :GitFiles?<CR>
-nmap <C-f> :Rg<CR>
-
-" -----------------------------------------------------------------------------
-"                                Signify Config
-" -----------------------------------------------------------------------------
-
-set updatetime=100
-
-let g:signify_sign_add = "+"
-let g:signify_sign_delete = "_"
-let g:signify_sign_change = "~"
-let g:signify_sign_delete_first_line = '‾'
-
-" Turn off numbers
-let g:signify_sign_show_count = 0
-let g:signify_sign_show_text = 1
-
-" Jump through hunks of diffs
-nmap <leader>gj <plug>(signify-next-hunk)
-nmap <leader>gk <plug>(signify-prev-hunk)
-
-" -----------------------------------------------------------------------------
-"                                Blamer Config
-" -----------------------------------------------------------------------------
-
-let g:blamer_enabled = 1
-
 " -----------------------------------------------------------------------------
 "                                Rust Config
 " -----------------------------------------------------------------------------
 
 let g:rustfmt_autosave = 1  " automatic running of rustfmt on save
-
-" -----------------------------------------------------------------------------
-"                               Coverage.vim
-" -----------------------------------------------------------------------------
-
-let g:coverage_json_report_path = 'coverage/coverage-final.json'
-let g:coverage_sign_covered = '⦿'
-let g:coverage_interval = 750
-let g:coverage_show_covered = 0
-let g:coverage_show_uncovered = 1
