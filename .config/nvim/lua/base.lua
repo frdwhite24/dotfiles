@@ -1,34 +1,47 @@
+-- this is for global (o), window (wo) or local (bo) settings, not general (g)
+local set = vim.opt
+local g = vim.g
+
 -- Spell checking
-vim.bo.spelllang = "en"
+set.spelllang = "en"
 
 -- Tabs, spaces & indent
-vim.bo.tabstop = 2
-vim.bo.autoindent = true
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
-vim.bo.smartindent = true
-vim.o.smarttab = true
-vim.bo.softtabstop = 2
+set.tabstop = 2
+set.autoindent = true
+set.expandtab = true
+set.shiftwidth = 2
+set.smartindent = true
+set.smarttab = true
+set.softtabstop = 2
+set.cindent = true
 
 -- Wrapping, viewports and windows
-vim.o.scrolloff = 8
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.errorbells = false
-vim.o.hidden = true
-vim.o.cmdheight = 1
+set.scrolloff = 8
+set.splitbelow = true
+set.splitright = true
+set.errorbells = false
+set.hidden = true
+set.cmdheight = 1
 
 -- Rulers and columns
-vim.wo.relativenumber = true
-vim.wo.number = true
-vim.wo.colorcolumn = "80"
-vim.wo.signcolumn = "yes"
+set.cursorline = true
+set.ruler = true
+set.relativenumber = true
+set.number = true
+set.colorcolumn = "80"
+set.signcolumn = "yes"
 -- TODO: find a better way to highlight the colour column with light grey
+-- this is supposedly a bit of a hack
 vim.highlight.create('ColorColumn', {ctermbg=0, guibg=lightgrey}, false)
 
+-- Search
+set.incsearch = true
+set.ignorecase = true
+set.smartcase = true
+
 -- Colour scheme
-vim.o.termguicolors = true
-vim.g.colors_name = 'nightfly'
+set.termguicolors = true
+g.colors_name = 'nightfly'
 
 -- Long update time (default 4s) leads to poor UX
-vim.o.updatetime = 100
+set.updatetime = 100
