@@ -4,7 +4,7 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Leader
-keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
+keymap('n', '<Space>', '<NOP>', opts)
 vim.g.mapleader = ' '
 
 -- File Explorer
@@ -26,10 +26,10 @@ keymap('n', 'sh', ':split<Return><C-w>w', {})  -- split window horizontally
 keymap('n', 'sv', ':vsplit<Return><C-w>w', {})  -- split window vertically
 keymap('n', '<TAB>', ':bnext<CR>', opts)  -- move to next buffer
 keymap('n', '<S-TAB>', ':bprevious<CR>', opts)  -- move to previous buffer
+keymap('n', '<c-k>', '<c-w>k', opts)  -- move to above split
 keymap('n', '<c-j>', '<c-w>j', opts)  -- move to below split
-keymap('n', '<c-h>', '<c-w>h', opts)  -- move to above split
-keymap('n', '<c-k>', '<c-w>k', opts)  -- move to right split
-keymap('n', '<c-l>', '<c-w>l', opts)  -- move to left split
+keymap('n', '<c-h>', '<c-w>h', opts)  -- move to left split
+keymap('n', '<c-l>', '<c-w>l', opts)  -- move to right split
 
 -- Signify git diffs
 keymap('n', '<Leader>gj', '<plug>(signify-next-hunk)', {})  -- jump through diffs
@@ -41,7 +41,7 @@ keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
 keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+-- keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 keymap('n', '<C-p>', '<cmd>lua vim.lsp.diagnostics.goto_prev()<CR>', opts)
 keymap('n', '<C-n>', '<cmd>lua vim.lsp.diagnostics.goto_next()<CR>', opts)
 keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)

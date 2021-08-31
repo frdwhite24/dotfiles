@@ -22,6 +22,7 @@ set.splitright = true
 set.errorbells = false
 set.hidden = true
 set.cmdheight = 1
+set.wrap = false
 
 -- Rulers and columns
 set.cursorline = true
@@ -45,3 +46,5 @@ g.colors_name = 'nightfly'
 
 -- Long update time (default 4s) leads to poor UX
 set.updatetime = 100
+
+-- set.formatoptions:remove({'c', 'r', 'o'})

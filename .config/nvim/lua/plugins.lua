@@ -1,43 +1,53 @@
--- TODO: not sure that this is the best way to structure the plugin configs, look
--- into improving it
-
+-- The structure of this follows the sections within this great collection
+-- of Neovim plugins https://github.com/rockerBOO/awesome-neovim#plugins
 require('packer').startup(function()
-  use 'wbthomason/packer.nvim'  -- Package manager
-  use 'bluz71/vim-nightfly-guicolors'  -- Colourscheme
-  use 'tomtom/tcomment_vim'  -- Code commenting toggle
-  use 'tpope/vim-surround'  -- Vim surround support (change brackets with cs)
-  use 'neovim/nvim-lspconfig'  -- Built in Neovim LSP client
+  -- Plugin Manager
+  use 'wbthomason/packer.nvim'
 
-  -- Autocompletion with nvim-cmp
+  -- LSP
+  use 'neovim/nvim-lspconfig'  -- Built in Neovim LSP client
+  -- use 'glepnir/lspsaga.nvim'  -- Improved LSP UI
+
+  -- Completion
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lua'
+  -- not working yet
+  use 'onsails/lspkind-nvim'  -- custom icons on completion menu
 
-  use 'haya14busa/is.vim'  -- Improved incremental search
-  use 'mattn/emmet-vim'  -- Emmet html/css workflow
-  use 'iamcco/markdown-preview.nvim'  -- Markdown previews
-
-  -- NVIM tree
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons'
-  }
-
-  -- Tree-sitter
+  -- Syntax
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
 
-  -- Status line
+  -- Colors
+  use 'norcalli/nvim-colorizer.lua'
+
+  -- Colorscheme
+  use 'bluz71/vim-nightfly-guicolors'
+
+  -- Statusline
   use {
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
-  -- Git diffs in sign column
+  -- File explorer
   use {
-    'mhinz/vim-signify',
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
+  
+  -- Git
+  use {
+    'APZelos/blamer.nvim',  -- inline git blame
+    config = function()
+      vim.g['blamer_enabled'] = 1
+    end
+  }
+  use {
+    'mhinz/vim-signify',  -- git diffs in sign column
     config = function()
       vim.g['signify_sign_add'] = '+'
       vim.g['signify_sign_delete'] = '_'
@@ -48,13 +58,24 @@ require('packer').startup(function()
     end
   }
 
-  -- Git blame inline
+  -- Comment
+  use 'tomtom/tcomment_vim'  -- Code commenting toggle
+  -- use 'folke/todo-comments.nvim'  -- Search through for TODO comments
+
+  -- Project
+  -- use 'windwp/nvim-spectre'  -- Search and replace panel
+
+  -- Editing supports
+  use 'tpope/vim-surround'  -- Vim surround support (change brackets with cs)
+  use 'haya14busa/is.vim'  -- Improved incremental search
   use {
-    'APZelos/blamer.nvim',
+    -- config included in nvim-cmp for new indented line between pairs after <CR>
+    'windwp/nvim-autopairs',
     config = function()
-      vim.g['blamer_enabled'] = 1
+      require('nvim-autopairs').setup{}
     end
   }
+  use 'windwp/nvim-ts-autotag'
 
   -- Test coverage in sign column
   use {

@@ -1,4 +1,4 @@
 require('initialize')
-require('base')
+require('settings')
 require('plugins')
 require('keybindings')
