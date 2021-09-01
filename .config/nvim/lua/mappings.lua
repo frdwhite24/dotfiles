@@ -14,6 +14,11 @@ keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', opts)
 keymap('v', '<', '<gv', opts)  -- reselect after indent left
 keymap('v', '>', '>gv', opts)  -- reselect after indent right
 
+-- Keep searches and joins centered 
+keymap('n', 'n', 'nzzzv', { noremap = true, silent = false })
+keymap('n', 'N', 'Nzzzv', { noremap = true, silent = false })
+keymap('n', 'J', 'mzJ`z', { noremap = true, silent = false })
+
 -- Move selected line/block of text in visual mode
 -- TODO: implement the below without the mark error coming up and so it works well
 -- keymap('x', 'K', ':move \'<-2<CR>gv-gv\'', opts)

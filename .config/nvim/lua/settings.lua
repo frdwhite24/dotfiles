@@ -47,4 +47,6 @@ g.colors_name = 'nightfly'
 -- Long update time (default 4s) leads to poor UX
 set.updatetime = 100
 
--- set.formatoptions:remove({'c', 'r', 'o'})
+-- Get rid of swap files and backups - generally never use these features.
+set.swapfile = false
+set.backup = false
