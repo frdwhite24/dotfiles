@@ -37,6 +37,7 @@ The list below outlines the packages I have installed on my laptop, additional t
 - neovim
 - git-delta (Better git diffs)
 - bat (Better cat)
+- fd-find (Better find)
 - fzf (Fuzzy file finder)
 - ripgrep (Recursive directory search for Regex pattern)
 - tmux (Easy terminal sessions and windows)

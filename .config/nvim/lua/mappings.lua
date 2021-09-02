@@ -62,3 +62,10 @@ keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
+-- Telescope
+keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', opts)
+keymap('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').git_files()<cr>', opts)
+keymap('n', '<leader>fs', '<cmd>lua require(\'telescope.builtin\').git_stash()<cr>', opts)
+keymap('n', '<leader>fw', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', opts)
+keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', opts)
+keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', opts)
