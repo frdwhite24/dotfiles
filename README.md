@@ -11,6 +11,8 @@ This repository uses the `git --bare` approach, resources I've used include:
 
 ## Prerequisites
 
+> Note: Ensure you've installed all LSs for Vim to properly function.
+
 The list below outlines the packages I have installed on my laptop, additional to the original distro.
 
 **GUI packages**

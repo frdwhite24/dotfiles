@@ -108,7 +108,7 @@ alias branch-clean='git branch --merged | egrep -v "(^\*|master|main|development
 alias dunzom='gcm && ggl && gfa && branch-clean'
 alias dunzod='git checkout development && ggl && gfa && branch-clean'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias dotman='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias dm='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
 alias puffin='cd ~/Documents/work/puffin && nvm use'
 alias kingfisher='cd ~/Documents/work/kingfisher'
