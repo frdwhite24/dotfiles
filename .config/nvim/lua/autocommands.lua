@@ -6,6 +6,5 @@ utils.define_augroups({
         {'BufWinEnter', '*', 'lua vim.opt.formatoptions:remove({\'c\', \'o\', \'r\'})'},
         {'BufRead', '*', 'lua vim.opt.formatoptions:remove({\'c\', \'o\', \'r\'})'},
         {'BufNewFile', '*', 'lua vim.opt.formatoptions:remove({\'c\', \'o\', \'r\'})'},
-    },
+    }
 })
-

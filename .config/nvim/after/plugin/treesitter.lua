@@ -26,6 +26,12 @@ require"nvim-treesitter.configs".setup {
   autotag = {
     enable = true,
   },
+  context_commentstring = {
+    enable = true
+    -- config = {
+      -- rust = '#'
+    -- }
+  }
 }
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

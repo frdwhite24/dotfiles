@@ -7,6 +7,11 @@ require('packer').startup(function()
   -- LSP
   use 'neovim/nvim-lspconfig'  -- Built in Neovim LSP client
   -- use 'glepnir/lspsaga.nvim'  -- Improved LSP UI
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
+  -- Lua support
+  use 'nvim-lua/plenary.nvim'  -- required by multiple plugins below
 
   -- Completion
   use 'hrsh7th/nvim-cmp'
@@ -29,7 +34,6 @@ require('packer').startup(function()
   -- Fuzzy finder
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   -- Colors
@@ -58,19 +62,15 @@ require('packer').startup(function()
     end
   }
   use {
-    'mhinz/vim-signify',  -- git diffs in sign column
+    'lewis6991/gitsigns.nvim',
     config = function()
-      vim.g['signify_sign_add'] = '+'
-      vim.g['signify_sign_delete'] = '_'
-      vim.g['signify_sign_change'] = '~'
-      vim.g['signify_sign_delete_first_line'] = '‾'
-      vim.g['signify_sign_show_count'] = 0
-      vim.g['signify_sign_show_text'] = 1
+      require('gitsigns').setup()
     end
   }
 
   -- Comment
-  use 'tomtom/tcomment_vim'  -- Code commenting toggle
+  use 'tpope/vim-commentary'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
   -- use 'folke/todo-comments.nvim'  -- Search through for TODO comments
 
   -- Project
@@ -88,7 +88,7 @@ require('packer').startup(function()
   }
   use 'windwp/nvim-ts-autotag'
 
-  -- Test coverage in sign column
+  -- Testing
   use {
     'ruanyl/coverage.vim',
     config = function()

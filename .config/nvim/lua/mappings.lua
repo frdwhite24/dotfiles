@@ -39,10 +39,6 @@ keymap('n', '<c-j>', '<c-w>j', opts)  -- move to below split
 keymap('n', '<c-h>', '<c-w>h', opts)  -- move to left split
 keymap('n', '<c-l>', '<c-w>l', opts)  -- move to right split
 
--- Signify git diffs
-keymap('n', '<Leader>gj', '<plug>(signify-next-hunk)', {})  -- jump through diffs
-keymap('n', '<Leader>gk', '<plug>(signify-prev-hunk)', {})  -- jump through diffs
-
 -- LSP
 keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -55,17 +51,18 @@ keymap('n', '<C-n>', '<cmd>lua vim.lsp.diagnostics.goto_next()<CR>', opts)
 keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
--- keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+keymap('n', '<space>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 -- Telescope
-keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', opts)
-keymap('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').git_files()<cr>', opts)
-keymap('n', '<leader>fs', '<cmd>lua require(\'telescope.builtin\').git_stash()<cr>', opts)
-keymap('n', '<leader>fw', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', opts)
-keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', opts)
-keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', opts)
+keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<CR>', opts)
+keymap('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').git_files()<CR>', opts)
+keymap('n', '<leader>fs', '<cmd>lua require(\'telescope.builtin\').git_stash()<CR>', opts)
+keymap('n', '<leader>fw', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>', opts)
+keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>', opts)
+keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<CR>', opts)
+keymap('n', '<leader>fv', '<cmd>lua require(\'fw.telescope\').search_config_nvim()<CR>', opts)
+
