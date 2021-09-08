@@ -1,10 +1,33 @@
+-- TODO: separate these out into separate language config files with instructions
+-- on how to install each LS
+-- use npm -g for global installing pyright, tsserver, prettier and eslint_d
+
 local nvim_lsp = require("lspconfig")
+
+---------------------------
+-- Rust
+---------------------------
+require('rust-tools').setup({
+  tools = {
+    hover_with_actions = false,
+    runnables = {
+      use_telescope = false
+    },
+    debuggables = {
+      use_telescope = false
+    },
+  }
+})
+
+---------------------------
+-- TS/JS
+---------------------------
+
 require("null-ls").config {}
 require("lspconfig")["null-ls"].setup {}
 
--- use npm -g for global installing pyright, tsserver, prettier and eslint_d
 nvim_lsp.tsserver.setup {
-on_attach = function(client, bufnr)
+  on_attach = function(client, bufnr)
     -- disable tsserver formatting if you plan on formatting via null-ls
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
@@ -64,6 +87,5 @@ on_attach = function(client, bufnr)
 
     -- format and organize imports on save
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-    vim.cmd("autocmd BufWritePre <buffer> TSLspOrganize")
   end
 }

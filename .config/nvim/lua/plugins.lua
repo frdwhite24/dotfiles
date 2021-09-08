@@ -9,6 +9,7 @@ require('packer').startup(function()
   -- use 'glepnir/lspsaga.nvim'  -- Improved LSP UI
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+  use 'simrat39/rust-tools.nvim'
 
   -- Lua support
   use 'nvim-lua/plenary.nvim'  -- required by multiple plugins below
@@ -19,6 +20,7 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-buffer'  -- Sources from here down
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-calc'
   use 'hrsh7th/vim-vsnip'
@@ -42,11 +44,12 @@ require('packer').startup(function()
   -- Colorscheme
   use 'bluz71/vim-nightfly-guicolors'
 
-  -- Statusline
+  -- Statusline and tabline
   use {
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
   -- File explorer
   use {

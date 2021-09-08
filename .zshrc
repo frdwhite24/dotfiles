@@ -111,7 +111,9 @@ alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias dm='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias vim='nvim'
 alias puffin='cd ~/Documents/work/puffin && nvm use'
+alias nvconf='cd ~/.config/nvim'
 alias kingfisher='cd ~/Documents/work/kingfisher'
+alias pack-sync='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
