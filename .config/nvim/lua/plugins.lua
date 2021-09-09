@@ -90,6 +90,7 @@ require('packer').startup(function()
     end
   }
   use 'windwp/nvim-ts-autotag'
+  use 'lukas-reineke/indent-blankline.nvim'
 
   -- Testing
   use {

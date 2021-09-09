@@ -24,7 +24,7 @@ require('rust-tools').setup({
 ---------------------------
 
 require("null-ls").config {}
-require("lspconfig")["null-ls"].setup {}
+nvim_lsp["null-ls"].setup {}
 
 nvim_lsp.tsserver.setup {
   on_attach = function(client, bufnr)
@@ -77,7 +77,7 @@ nvim_lsp.tsserver.setup {
     -- no default maps, so you may want to define some here
     local opts = { silent = true }
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":TSLspRenameFile<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "grn", ":TSLspRenameFile<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
 
     -- NVIM LSP TS Utils formatting
@@ -88,4 +88,14 @@ nvim_lsp.tsserver.setup {
     -- format and organize imports on save
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
   end
+}
+
+---------------------------
+-- CSS
+---------------------------
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+nvim_lsp.cssls.setup {
+  capabilities = capabilities,
 }
