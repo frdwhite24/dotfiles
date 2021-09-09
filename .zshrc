@@ -114,6 +114,7 @@ alias puffin='cd ~/Documents/work/puffin && nvm use'
 alias nvconf='cd ~/.config/nvim'
 alias kingfisher='cd ~/Documents/work/kingfisher'
 alias pack-sync='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y'
+alias ggraph='git log --graph --oneline --decorate'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
