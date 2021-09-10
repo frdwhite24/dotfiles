@@ -18,11 +18,11 @@ require('packer').startup(function()
   use 'hrsh7th/nvim-cmp'
   use 'onsails/lspkind-nvim'  -- custom icons on completion menu
   use 'hrsh7th/cmp-buffer'  -- Sources from here down
-  use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-calc'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
   use "rafamadriz/friendly-snippets"

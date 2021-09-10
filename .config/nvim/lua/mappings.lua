@@ -7,29 +7,25 @@ local opts = { noremap = true, silent = true }
 keymap('n', '<Space>', '<NOP>', opts)
 vim.g.mapleader = ' '
 
--- File Explorer
-keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', opts)
-
 -- Easier indenting
 keymap('v', '<', '<gv', opts)  -- reselect after indent left
 keymap('v', '>', '>gv', opts)  -- reselect after indent right
 
 -- Keep searches and joins centered 
-keymap('n', 'n', 'nzzzv', { noremap = true, silent = false })
-keymap('n', 'N', 'Nzzzv', { noremap = true, silent = false })
-keymap('n', 'J', 'mzJ`z', { noremap = true, silent = false })
+keymap('n', 'n', 'nzzzv', opts)
+keymap('n', 'N', 'Nzzzv', opts)
+keymap('n', 'J', 'mzJ`z', opts)
 
 -- Yanking to behave like other Vim commands.
-keymap('n', 'Y', 'y$', { noremap = true, silent = false })
+keymap('n', 'Y', 'y$', opts)
 
--- Move selected line/block of text in visual mode
--- TODO: implement the below without the mark error coming up and so it works well
--- keymap('x', 'K', ':move \'<-2<CR>gv-gv\'', opts)
--- keymap('x', 'J', ':move \'<+1<CR>gv-gv\'', opts)
+-- Add undo break points for special characters
+keymap('i', ',', ',<c-g>u', { noremap = true, silent = true })
+keymap('i', '.', '.<c-g>u', { noremap = true, silent = true })
+keymap('i', '!', '!<c-g>u', { noremap = true, silent = true })
+keymap('i', '?', '?<c-g>u', { noremap = true, silent = true })
 
 -- Working with buffers
-keymap('n', '<c-s>', ':w<CR>', {})  -- save buffer in normal mode
-keymap('i', '<c-s>', '<Esc>:w<CR>a', {})  -- save buffer in insert mode
 keymap('n', 'sh', ':split<Return><C-w>w', {})  -- split window horizontally
 keymap('n', 'sv', ':vsplit<Return><C-w>w', {})  -- split window vertically
 keymap('n', '<TAB>', ':bnext<CR>', opts)  -- move to next buffer
@@ -38,6 +34,9 @@ keymap('n', '<c-k>', '<c-w>k', opts)  -- move to above split
 keymap('n', '<c-j>', '<c-w>j', opts)  -- move to below split
 keymap('n', '<c-h>', '<c-w>h', opts)  -- move to left split
 keymap('n', '<c-l>', '<c-w>l', opts)  -- move to right split
+
+-- File Explorer
+keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', opts)
 
 -- LSP
 keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -58,7 +57,7 @@ keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 -- Telescope
-keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<CR>', opts)
+keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files({hidden=true})<CR>', opts)
 keymap('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').git_files()<CR>', opts)
 keymap('n', '<leader>fs', '<cmd>lua require(\'telescope.builtin\').git_stash()<CR>', opts)
 keymap('n', '<leader>fw', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>', opts)
