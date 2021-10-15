@@ -15,7 +15,7 @@
 
   // Overall theme settings
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "monokai-charcoal (gray)",
+  "workbench.colorTheme": "Night Owl (No Italics)",
   "editor.rulers": [79],
   "editor.renderWhitespace": "selection",
   "editor.renderIndentGuides": true,
@@ -98,5 +98,10 @@
     "*.ipynb": "jupyter.notebook.ipynb"
   },
   "javascript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.preferences.importModuleSpecifier": "non-relative"
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/",
+  "files.watcherExclude": {
+    "**/.next/**": true
+  }
 }

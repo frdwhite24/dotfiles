@@ -63,7 +63,7 @@ keymap('n', '<leader>fs', '<cmd>lua require(\'telescope.builtin\').git_stash()<C
 keymap('n', '<leader>fw', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>', opts)
 keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>', opts)
 keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<CR>', opts)
-keymap('n', '<leader>fv', '<cmd>lua require(\'fw.telescope\').search_config_nvim()<CR>', opts)
+keymap('n', '<leader>fc', '<cmd>lua require(\'fw.telescope\').search_config_nvim()<CR>', opts)
 
 -- Bufferline
 keymap('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<CR>', opts)
