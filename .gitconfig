@@ -1,5 +1,5 @@
 [user]
-	email = f.white@enian.co
+	email = fred-white@hotmail.co.uk
 	name = Fred White
 
 [pager]
@@ -17,3 +17,6 @@
 
 [interactive]
   diffFilter = delta --color-only
+
+[core]
+	editor = nvim

@@ -75,7 +75,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions deno npm)
+plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions deno npm docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,11 +107,18 @@ source $ZSH/oh-my-zsh.sh
 alias branch-clean='git branch --merged | egrep -v "(^\*|master|main|development)" | xargs git branch -d'
 alias dunzom='gcm && ggl && gfa && branch-clean'
 alias dunzod='git checkout development && ggl && gfa && branch-clean'
+alias dunzos='git checkout staging && ggl && gfa && branch-clean'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias dotman='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-alias vim='nvim'
-alias puffin='cd ~/Documents/work/puffin && nvm use'
-alias kingfisher='cd ~/Documents/work/kingfisher'
+alias dm='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias nvconf='cd ~/.config/nvim'
+alias pack-sync='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y'
+alias ggraph='git log --graph --oneline --decorate'
+alias dotman="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias bat="batcat"
+alias front="cd ~/Documents/work/front/"
+alias npclt="cd ~/Documents/work/front/packages/client-app/"
+alias npctl="cd ~/Documents/work/front/packages/control/"
+alias myalias="grep '^alias' ~/.zshrc"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

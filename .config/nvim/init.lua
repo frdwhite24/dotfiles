@@ -1,0 +1,5 @@
+require('initialize')
+require('settings')
+require('plugins')
+require('mappings')
+require('autocommands')
