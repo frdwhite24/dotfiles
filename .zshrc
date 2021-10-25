@@ -102,8 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="mate ~/.zshrc"
 alias branch-clean='git branch --merged | egrep -v "(^\*|master|main|development)" | xargs git branch -d'
 alias dunzom='gcm && ggl && gfa && branch-clean'
 alias dunzod='git checkout development && ggl && gfa && branch-clean'
@@ -118,7 +117,9 @@ alias bat="batcat"
 alias front="cd ~/Documents/work/front/"
 alias npclt="cd ~/Documents/work/front/packages/client-app/"
 alias npctl="cd ~/Documents/work/front/packages/control/"
+alias npcmp="cd ~/Documents/work/front/packages/np-ui/"
 alias myalias="grep '^alias' ~/.zshrc"
+alias sunvim="sudo -E -s nvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
