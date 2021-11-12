@@ -75,7 +75,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions deno npm docker docker-compose)
+plugins=(git z colored-man-pages zsh-syntax-highlighting zsh-autosuggestions deno npm docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,15 +109,10 @@ alias dunzod='git checkout development && ggl && gfa && branch-clean'
 alias dunzos='git checkout staging && ggl && gfa && branch-clean'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias dm='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-alias nvconf='cd ~/.config/nvim'
 alias pack-sync='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y'
 alias ggraph='git log --graph --oneline --decorate'
 alias dotman="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 alias bat="batcat"
-alias front="cd ~/Documents/work/front/"
-alias npclt="cd ~/Documents/work/front/packages/client-app/"
-alias npctl="cd ~/Documents/work/front/packages/control/"
-alias npcmp="cd ~/Documents/work/front/packages/np-ui/"
 alias myalias="grep '^alias' ~/.zshrc"
 alias sunvim="sudo -E -s nvim"
 
@@ -128,13 +123,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
- eval "$(pyenv init -)"
-fi
-
-
-export DENO_INSTALL="/home/fred/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"

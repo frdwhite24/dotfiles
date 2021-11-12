@@ -77,14 +77,19 @@ require('packer').startup(function()
   -- Comment
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
-  -- use 'folke/todo-comments.nvim'  -- Search through for TODO comments
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {}
+    end
+  }
 
   -- Project
   -- use 'windwp/nvim-spectre'  -- Search and replace panel
 
   -- Editing supports
   use 'tpope/vim-surround'  -- Vim surround support (change brackets with cs)
-  use 'haya14busa/is.vim'  -- Improved incremental search
   use {
     -- config included in nvim-cmp for new indented line between pairs after <CR>
     'windwp/nvim-autopairs',
@@ -94,6 +99,14 @@ require('packer').startup(function()
   }
   use 'windwp/nvim-ts-autotag'
   use 'lukas-reineke/indent-blankline.nvim'
+  use 'yamatsum/nvim-cursorline'
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {'tami5/sqlite.lua', module = 'sqlite'},
+    config = function()
+      require('neoclip').setup()
+    end,
+  }
 
   -- Testing
   use {

@@ -7,9 +7,6 @@ utils.define_augroups({
         {'BufRead', '*', 'lua vim.opt.formatoptions:remove({\'c\', \'o\', \'r\'})'},
         {'BufNewFile', '*', 'lua vim.opt.formatoptions:remove({\'c\', \'o\', \'r\'})'},
 
-        -- TODO: once dashboard is in, uncomment this line
-        -- {'VimEnter', '*', 'PackerSync'},
-
         -- Highlight on yank
         {'TextYankPost', '*', 'silent! lua vim.highlight.on_yank()'},
 

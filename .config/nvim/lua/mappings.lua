@@ -37,6 +37,8 @@ keymap('n', '<c-l>', '<c-w>l', opts)  -- move to right split
 
 -- File Explorer
 keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', opts)
+keymap('n', '<Leader>wq', ':w|bd<CR>', opts)
+keymap('n', '<Leader>q', ':bd<CR>', opts)
 
 -- LSP
 keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -49,11 +51,10 @@ keymap('n', '<C-p>', '<cmd>lua vim.lsp.diagnostics.goto_prev()<CR>', opts)
 keymap('n', '<C-n>', '<cmd>lua vim.lsp.diagnostics.goto_next()<CR>', opts)
 keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 keymap('n', '<space>ld', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+-- keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 -- Telescope
@@ -64,6 +65,7 @@ keymap('n', '<leader>fw', '<cmd>lua require(\'telescope.builtin\').live_grep()<C
 keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>', opts)
 keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<CR>', opts)
 keymap('n', '<leader>fc', '<cmd>lua require(\'fw.telescope\').search_config_nvim()<CR>', opts)
+keymap('n', '<leader>fy', ':Telescope neoclip plus<CR>', opts)
 
 -- Bufferline
 keymap('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<CR>', opts)

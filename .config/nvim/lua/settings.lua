@@ -34,7 +34,8 @@ set.signcolumn          = "yes"
 vim.highlight.create('ColorColumn', {ctermbg=0, guibg=lightgrey}, false)
 
 -- Search
-set.incsearch           = true
+set.incsearch           = false
+set.hlsearch            = false
 set.ignorecase          = true
 set.smartcase           = true
 
@@ -48,3 +49,6 @@ set.updatetime          = 100
 -- Get rid of swap files and backups - generally never use these features.
 set.swapfile            = false
 set.backup              = false
+
+-- Registers
+-- g.clipboard             = "unnamedplus"
