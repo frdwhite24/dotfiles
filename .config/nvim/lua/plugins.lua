@@ -9,6 +9,9 @@ require('packer').startup(function()
   -- use 'glepnir/lspsaga.nvim'  -- Improved LSP UI
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+  use 'rust-lang/rust.vim'  -- rust.vim in Neovim pre-package has bug
+  -- master branch on rust.vim has it fixed so update direct from there
+  -- https://github.com/rust-lang/rust.vim/issues/460
   use 'simrat39/rust-tools.nvim'
 
   -- Lua support
@@ -43,13 +46,20 @@ require('packer').startup(function()
 
   -- Colorscheme
   use 'bluz71/vim-nightfly-guicolors'
+  use 'EdenEast/nightfox.nvim'
 
-  -- Statusline and tabline
+  -- Statusline, tabline and dashboard
   use {
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  use {
+    'goolord/alpha-nvim',
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+    end
+  }
 
   -- File explorer
   use {
@@ -73,6 +83,7 @@ require('packer').startup(function()
       require('gitsigns').setup()
     end
   }
+  -- use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Comment
   use 'tpope/vim-commentary'
@@ -98,7 +109,14 @@ require('packer').startup(function()
     end
   }
   use 'windwp/nvim-ts-autotag'
-  use 'lukas-reineke/indent-blankline.nvim'
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require("indent_blankline").setup {
+        filetype_exclude = { "alpha" },
+      }
+    end
+  }
   use 'yamatsum/nvim-cursorline'
   use {
     "AckslD/nvim-neoclip.lua",

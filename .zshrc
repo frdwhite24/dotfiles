@@ -115,6 +115,13 @@ alias dotman="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 alias bat="batcat"
 alias myalias="grep '^alias' ~/.zshrc"
 alias sunvim="sudo -E -s nvim"
+alias runpretfmt="npx prettier --write ./src"
+alias pfmt="cd ~/Documents/work/front/packages/api/ && runpretfmt\
+  && cd ../control && runpretfmt\
+  && cd ../np-ui && runpretfmt\
+  && cd ../client-app && runpretfmt\
+  && cd ../types && runpretfmt\
+  && cd .."
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -26,6 +26,7 @@ set.wrap                = false
 
 -- Rulers and columns
 set.cursorline          = true
+g.cursorline_timeout    = 25
 set.ruler               = true
 set.relativenumber      = true
 set.number              = true
@@ -41,7 +42,7 @@ set.smartcase           = true
 
 -- Colour scheme
 set.termguicolors       = true
-g.colors_name           = 'nightfly'
+g.colors_name           = 'nightfox'
 
 -- Long update time (default 4s) leads to poor UX
 set.updatetime          = 100
@@ -52,3 +53,6 @@ set.backup              = false
 
 -- Registers
 -- g.clipboard             = "unnamedplus"
+
+-- Rust formatting
+g.rustfmt_autosave      = 1 
