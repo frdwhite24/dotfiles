@@ -28,8 +28,8 @@ cmp.setup {
 
   -- You should specify your *installed* sources.
   sources = {
-    { name = 'buffer' },
     { name = 'nvim_lsp' },
+    { name = 'buffer' },
     { name = 'path' },
     { name = 'calc' },
     { name = 'vsnip' },

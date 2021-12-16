@@ -8,6 +8,11 @@ require('packer').startup(function()
   use 'neovim/nvim-lspconfig'  -- Built in Neovim LSP client
   -- use 'glepnir/lspsaga.nvim'  -- Improved LSP UI
   use 'jose-elias-alvarez/null-ls.nvim'
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+    after = "nvim-lspconfig",
+    requires = { "nvim-lua/plenary.nvim" },
+  }
   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
   use 'rust-lang/rust.vim'  -- rust.vim in Neovim pre-package has bug
   -- master branch on rust.vim has it fixed so update direct from there
@@ -35,6 +40,13 @@ require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use {
+    'romgrk/nvim-treesitter-context',
+    config = function()
+      require'treesitter-context'.setup()
+    end
+  }
 
   -- Fuzzy finder
   use {
@@ -45,8 +57,12 @@ require('packer').startup(function()
   use 'norcalli/nvim-colorizer.lua'
 
   -- Colorscheme
-  use 'bluz71/vim-nightfly-guicolors'
-  use 'EdenEast/nightfox.nvim'
+  use {
+    'EdenEast/nightfox.nvim',
+    config = function ()
+      require'nightfox'.load("nightfox")
+    end
+  }
 
   -- Statusline, tabline and dashboard
   use {
@@ -83,6 +99,11 @@ require('packer').startup(function()
       require('gitsigns').setup()
     end
   }
+  use {
+      'ruifm/gitlinker.nvim',
+      requires = 'nvim-lua/plenary.nvim',
+  }
+  -- use 'jltwheeler/nvim-git-link'
   -- use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Comment

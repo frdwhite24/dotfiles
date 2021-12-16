@@ -1,5 +1,4 @@
 local nvim_lsp = require('lspconfig')
-local null_ls = require('null-ls')
 
 local generic_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -47,6 +46,13 @@ require('rust-tools').setup({
     debuggables = {
       use_telescope = false
     },
+    inlay_hints = {
+      -- prefix for parameter hints
+      parameter_hints_prefix = ": ",
+
+      -- prefix for all the other hints (type, chaining)
+      other_hints_prefix = ": ",
+    }
   }
 })
 
@@ -125,30 +131,27 @@ nvim_lsp.tsserver.setup {
     end
 }
 
--- Enable null-ls integration for eslint integration
-null_ls.config {
-  save_after_format = false,
+local null_ls = require('null-ls')
+local b = null_ls.builtins
+
+null_ls.setup {
+  -- format on save set in autocmds
   sources = {
-    -- eslint_d/js/jsx/ts/tsx handled by nvim_ts_utils
-    null_ls.builtins.formatting.prettier.with({
+    -- [web] shell: sudo npm i -g prettierd
+    b.formatting.prettierd.with({
       filetypes = { "yaml", "json", "html", "css", "scss" },
+      prefer_local = "node_modules/.bin",
     }),
-  }
+    -- [markdown] shell: sudo npm i -g write-good
+    -- b.diagnostics.write_good,
+    -- [lua] shell: cargo install stylua
+    -- b.formatting.stylua,
+  },
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    end
+  end,
 }
 
-nvim_lsp["null-ls"].setup {
-  on_attach = function(_, bufnr)
-    vim.api.nvim_buf_set_keymap(
-      bufnr,
-      "n",
-      "<leader>z",
-      "<cmd>lua vim.lsp.buf.formatting()<CR>",
-      { noremap = true, silent = true }
-    )
-    -- format on save
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-  end,
-  flags = {
-    debounce_text_changes = 250,
-  },
-}
+

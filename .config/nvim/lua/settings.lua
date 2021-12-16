@@ -22,7 +22,7 @@ set.splitright          = true
 set.errorbells          = false
 set.hidden              = true
 set.cmdheight           = 1
-set.wrap                = false
+set.wrap                = true
 
 -- Rulers and columns
 set.cursorline          = true
@@ -42,7 +42,6 @@ set.smartcase           = true
 
 -- Colour scheme
 set.termguicolors       = true
-g.colors_name           = 'nightfox'
 
 -- Long update time (default 4s) leads to poor UX
 set.updatetime          = 100
