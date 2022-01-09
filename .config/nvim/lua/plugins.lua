@@ -6,8 +6,6 @@ require('packer').startup(function()
 
   -- LSP
   use 'neovim/nvim-lspconfig'  -- Built in Neovim LSP client
-  -- use 'glepnir/lspsaga.nvim'  -- Improved LSP UI
-  use 'jose-elias-alvarez/null-ls.nvim'
   use {
     "jose-elias-alvarez/null-ls.nvim",
     after = "nvim-lspconfig",
@@ -31,7 +29,7 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-calc'
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip' -- set this up properly
   use 'hrsh7th/vim-vsnip-integ'
   use "rafamadriz/friendly-snippets"
 
@@ -145,18 +143,6 @@ require('packer').startup(function()
     config = function()
       require('neoclip').setup()
     end,
-  }
-
-  -- Testing
-  use {
-    'ruanyl/coverage.vim',
-    config = function()
-      vim.g['coverage_json_report_path'] = 'coverage/coverage-final.json'
-      vim.g['coverage_sign_covered'] = '⦿'
-      vim.g['coverage_interval'] = 750
-      vim.g['coverage_show_covered'] = 0
-      vim.g['coverage_show_uncovered'] = 1
-    end
   }
 end)
 
