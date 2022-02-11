@@ -1,10 +1,4 @@
--- The structure of this follows the sections within this great collection
--- of Neovim plugins https://github.com/rockerBOO/awesome-neovim#plugins
-require('packer').startup(function()
-  -- Plugin Manager
-  use 'wbthomason/packer.nvim'
-
-  -- LSP
+local lsp = function(use)
   use 'neovim/nvim-lspconfig'  -- Built in Neovim LSP client
   use {
     "jose-elias-alvarez/null-ls.nvim",
@@ -16,24 +10,36 @@ require('packer').startup(function()
   -- master branch on rust.vim has it fixed so update direct from there
   -- https://github.com/rust-lang/rust.vim/issues/460
   use 'simrat39/rust-tools.nvim'
+end
 
-  -- Lua support
-  use 'nvim-lua/plenary.nvim'  -- required by multiple plugins below
-
-  -- Completion
+local completion = function(use)
   use 'hrsh7th/nvim-cmp'
-  use 'onsails/lspkind-nvim'  -- custom icons on completion menu
-  use 'hrsh7th/cmp-buffer'  -- Sources from here down
-  use 'hrsh7th/cmp-nvim-lsp'
+  use 'L3MON4D3/LuaSnip' -- https://github.com/L3MON4D3/LuaSnip
+  use "rafamadriz/friendly-snippets"  -- https://github.com/rafamadriz/friendly-snippets
+
+  -- Completion sources from here down
+  use 'hrsh7th/cmp-buffer'
+  -- TODO: remove if not needed
+  use 'hrsh7th/cmp-nvim-lsp'  -- https://github.com/hrsh7th/cmp-nvim-lsp
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-calc'
-  use 'hrsh7th/cmp-nvim-lua'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip' -- set this up properly
-  use 'hrsh7th/vim-vsnip-integ'
-  use "rafamadriz/friendly-snippets"
+  use 'hrsh7th/cmp-nvim-lua'  -- https://github.com/hrsh7th/cmp-nvim-lua
+  use 'saadparwaiz1/cmp_luasnip'  -- https://github.com/saadparwaiz1/cmp_luasnip
+  -- TODO: look into this npm cmp lib https://github.com/David-Kunz/cmp-npm
+  -- TODO: look into tabnine with cmp https://github.com/tzachar/cmp-tabnine
+end
 
-  -- Syntax
+local utils = function(use)
+  use 'nvim-lua/plenary.nvim'  -- https://github.com/nvim-lua/plenary.nvim
+end
+
+local syntax = function(use)
+  use {
+    'EdenEast/nightfox.nvim',
+    config = function ()
+      require'nightfox'.load("nightfox")
+    end
+  }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
@@ -45,37 +51,43 @@ require('packer').startup(function()
       require'treesitter-context'.setup()
     end
   }
-
-  -- Fuzzy finder
-  use {
-    'nvim-telescope/telescope.nvim',
-  }
-
-  -- Colors
   use 'norcalli/nvim-colorizer.lua'
+end
 
-  -- Colorscheme
+local layout = function(use)
   use {
-    'EdenEast/nightfox.nvim',
-    config = function ()
-      require'nightfox'.load("nightfox")
-    end
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons'
   }
-
-  -- Statusline, tabline and dashboard
   use {
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
-  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   use {
     'goolord/alpha-nvim',
     config = function ()
-        require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+      require'alpha'.setup(require'alpha.themes.dashboard'.opts)
     end
   }
+end
 
-  -- File explorer
+local git = function(use)
+  use {
+    'lewis6991/gitsigns.nvim',  -- https://github.com/lewis6991/gitsigns.nvim
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
+  use {
+      'ruifm/gitlinker.nvim',  -- https://github.com/ruifm/gitlinker.nvim
+      requires = 'nvim-lua/plenary.nvim',
+  }
+end
+
+local navigation = function(use)
+  use {
+    'nvim-telescope/telescope.nvim',
+  }
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -83,28 +95,9 @@ require('packer').startup(function()
       require'nvim-tree'.setup()
     end
   }
-  
-  -- Git
-  use {
-    'APZelos/blamer.nvim',  -- inline git blame
-    config = function()
-      vim.g['blamer_enabled'] = 1
-    end
-  }
-  use {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
-  use {
-      'ruifm/gitlinker.nvim',
-      requires = 'nvim-lua/plenary.nvim',
-  }
-  -- use 'jltwheeler/nvim-git-link'
-  -- use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+end
 
-  -- Comment
+local comments = function(use)
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use {
@@ -114,11 +107,9 @@ require('packer').startup(function()
       require("todo-comments").setup {}
     end
   }
+end
 
-  -- Project
-  -- use 'windwp/nvim-spectre'  -- Search and replace panel
-
-  -- Editing supports
+local editor_support = function(use)
   use 'tpope/vim-surround'  -- Vim surround support (change brackets with cs)
   use {
     -- config included in nvim-cmp for new indented line between pairs after <CR>
@@ -137,12 +128,20 @@ require('packer').startup(function()
     end
   }
   use 'yamatsum/nvim-cursorline'
-  use {
-    "AckslD/nvim-neoclip.lua",
-    requires = {'tami5/sqlite.lua', module = 'sqlite'},
-    config = function()
-      require('neoclip').setup()
-    end,
-  }
-end)
+end
 
+local startup = function(use)
+  use 'wbthomason/packer.nvim'  -- https://github.com/wbthomason/packer.nvim
+
+  lsp(use)
+  completion(use)
+  utils(use)
+  syntax(use)
+  layout(use)
+  git(use)
+  navigation(use)
+  comments(use)
+  editor_support(use)
+end
+
+require('packer').startup(startup)

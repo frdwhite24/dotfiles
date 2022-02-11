@@ -1,4 +1,5 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -102,26 +103,30 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+
+function gitdb() {
+  if [ $# -eq 0 ]; then
+    echo "Branch name required e.g. gitdb fw/"
+    return
+  else
+    git branch | grep $1 | xargs git branch -D
+  fi
+}
 alias zshconfig="mate ~/.zshrc"
-alias branch-clean='git branch --merged | egrep -v "(^\*|master|main|development)" | xargs git branch -d'
+alias branch-clean='git branch --merged | egrep -v "(^\*|master|main|development|staging)" | xargs git branch -d'
 alias dunzom='gcm && ggl && gfa && branch-clean'
 alias dunzod='git checkout development && ggl && gfa && branch-clean'
 alias dunzos='git checkout staging && ggl && gfa && branch-clean'
+alias go="gaa && git cz && ggp"
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias dm='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias pack-sync='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y'
 alias ggraph='git log --graph --oneline --decorate'
 alias dotman="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 alias bat="batcat"
-alias myalias="grep '^alias' ~/.zshrc"
+alias myalias="grep '^alias\|^function' ~/.zshrc"
 alias sunvim="sudo -E -s nvim"
 alias runpretfmt="npx prettier --write ./src"
-alias pfmt="cd ~/Documents/work/front/packages/api/ && runpretfmt\
-  && cd ../control && runpretfmt\
-  && cd ../np-ui && runpretfmt\
-  && cd ../client-app && runpretfmt\
-  && cd ../types && runpretfmt\
-  && cd .."
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

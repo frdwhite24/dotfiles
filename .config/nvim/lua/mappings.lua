@@ -41,10 +41,6 @@ keymap('n', '<Leader>wq', ':w|bd<CR>', opts)
 keymap('n', '<Leader>q', ':bd<CR>', opts)
 
 -- LSP
-keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 -- keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 keymap('n', '<C-p>', '<cmd>lua vim.lsp.diagnostics.goto_prev()<CR>', opts)
@@ -66,7 +62,6 @@ keymap('n', '<leader>fw', '<cmd>lua require(\'telescope.builtin\').live_grep()<C
 keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>', opts)
 keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<CR>', opts)
 keymap('n', '<leader>fc', '<cmd>lua require(\'fw.telescope\').search_config_nvim()<CR>', opts)
-keymap('n', '<leader>fy', ':Telescope neoclip plus<CR>', opts)
 
 -- Bufferline
 keymap('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<CR>', opts)

@@ -103,5 +103,6 @@
   "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/",
   "files.watcherExclude": {
     "**/.next/**": true
-  }
+  },
+  "window.zoomLevel": 1
 }

@@ -7,12 +7,17 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd 'packadd packer.nvim'
 end
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+-- This autocommand comes from the Packer GH README and automatically runs
+-- PackerCompile which regenerates the compiled loader file for nvim upon change
+-- to plugins.lua
+-- Update: removed for now as it was causing annoying errors upon plugin change
+
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+--   augroup end
+-- ]])
 
 -- Disable some builtin vim plugins
 local disabled_built_ins = {
