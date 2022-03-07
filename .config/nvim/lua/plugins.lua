@@ -15,7 +15,7 @@ end
 local completion = function(use)
   use 'hrsh7th/nvim-cmp'
   use 'L3MON4D3/LuaSnip' -- https://github.com/L3MON4D3/LuaSnip
-  use "rafamadriz/friendly-snippets"  -- https://github.com/rafamadriz/friendly-snippets
+  -- use "rafamadriz/friendly-snippets"  -- https://github.com/rafamadriz/friendly-snippets
 
   -- Completion sources from here down
   use 'hrsh7th/cmp-buffer'
@@ -25,8 +25,9 @@ local completion = function(use)
   use 'hrsh7th/cmp-calc'
   use 'hrsh7th/cmp-nvim-lua'  -- https://github.com/hrsh7th/cmp-nvim-lua
   use 'saadparwaiz1/cmp_luasnip'  -- https://github.com/saadparwaiz1/cmp_luasnip
-  -- TODO: look into this npm cmp lib https://github.com/David-Kunz/cmp-npm
-  -- TODO: look into tabnine with cmp https://github.com/tzachar/cmp-tabnine
+  -- NOTE: these are on my watch list
+  -- tried but not happy with this https://github.com/tzachar/cmp-tabnine
+  -- https://github.com/David-Kunz/cmp-npm
 end
 
 local utils = function(use)
@@ -64,7 +65,8 @@ local layout = function(use)
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   use {
-    'goolord/alpha-nvim',
+    'goolord/alpha-nvim',  -- https://github.com/goolord/alpha-nvim
+    requires = { 'kyazdani42/nvim-web-devicons' },
     config = function ()
       require'alpha'.setup(require'alpha.themes.dashboard'.opts)
     end
@@ -85,15 +87,10 @@ local git = function(use)
 end
 
 local navigation = function(use)
+  use 'nvim-telescope/telescope.nvim'
   use {
-    'nvim-telescope/telescope.nvim',
-  }
-  use {
-    'kyazdani42/nvim-tree.lua',
+    'kyazdani42/nvim-tree.lua',  -- https://github.com/kyazdani42/nvim-tree.lua
     requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require'nvim-tree'.setup()
-    end
   }
 end
 
@@ -101,7 +98,7 @@ local comments = function(use)
   use 'tpope/vim-commentary'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use {
-    "folke/todo-comments.nvim",
+    "folke/todo-comments.nvim",  -- https://github.com/folke/todo-comments.nvim
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup {}
@@ -124,6 +121,7 @@ local editor_support = function(use)
     config = function()
       require("indent_blankline").setup {
         filetype_exclude = { "alpha" },
+        show_current_context = true,
       }
     end
   }

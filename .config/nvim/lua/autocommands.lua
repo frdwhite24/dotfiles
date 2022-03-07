@@ -3,7 +3,7 @@ local utils = require'utils'
 utils.define_augroups({
     _general_settings = {
         -- Disable continuation of comments on next line
-        {'BufWinEnter', '*', 'lua vim.opt.formatoptions:remove({\'c\', \'o\', \'r\'})'},
+        {'BufWinEnter', '*', 'lua vim.opt.formatoptions:remove({\'c\', \'o\'})'},
         {'BufRead', '*', 'lua vim.opt.formatoptions:remove({\'c\', \'o\', \'r\'})'},
         {'BufNewFile', '*', 'lua vim.opt.formatoptions:remove({\'c\', \'o\', \'r\'})'},
 
