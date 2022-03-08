@@ -5,6 +5,11 @@ require'nvim-tree'.setup {
     enable      = true,
     update_cwd  = false,
   },
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
+  },
   view = {
     width = 60,
     height = 30,
