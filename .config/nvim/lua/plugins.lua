@@ -64,13 +64,16 @@ local layout = function(use)
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
-  use {
-    'goolord/alpha-nvim',  -- https://github.com/goolord/alpha-nvim
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    config = function ()
-      require'alpha'.setup(require'alpha.themes.dashboard'.opts)
-    end
-  }
+  -- FIXME: this introduces a bug where if i open a file from a quickfix list while
+  -- the dashboard is open, it'll split the buffers horizontally instead of opening
+  -- the file over the dashboard and closing the dashboard buffer
+  -- use {
+  --   'goolord/alpha-nvim',  -- https://github.com/goolord/alpha-nvim
+  --   requires = { 'kyazdani42/nvim-web-devicons' },
+  --   config = function ()
+  --     require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+  --   end
+  -- }
 end
 
 local git = function(use)
@@ -125,7 +128,7 @@ local editor_support = function(use)
       }
     end
   }
-  use 'yamatsum/nvim-cursorline'
+  use 'yamatsum/nvim-cursorline'  -- https://github.com/yamatsum/nvim-cursorline
 end
 
 local startup = function(use)
