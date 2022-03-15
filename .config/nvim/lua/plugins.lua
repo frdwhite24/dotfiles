@@ -53,6 +53,13 @@ local syntax = function(use)
     end
   }
   use 'norcalli/nvim-colorizer.lua'
+  use {
+    "narutoxy/dim.lua",  -- https://github.com/NarutoXY/dim.lua
+    requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+    config = function()
+      require('dim').setup({})
+    end
+  }
 end
 
 local layout = function(use)
