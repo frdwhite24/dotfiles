@@ -36,10 +36,11 @@ end
 
 local syntax = function(use)
   use {
-    'EdenEast/nightfox.nvim',
+    'EdenEast/nightfox.nvim',  -- https://github.com/EdenEast/nightfox.nvim
     config = function ()
       require'nightfox'.load("nightfox")
-    end
+    end,
+    tag = "v1.0.0"
   }
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -127,7 +128,7 @@ local editor_support = function(use)
   }
   use 'windwp/nvim-ts-autotag'
   use {
-    'lukas-reineke/indent-blankline.nvim',
+    'lukas-reineke/indent-blankline.nvim',  -- https://github.com/lukas-reineke/indent-blankline.nvim
     config = function()
       require("indent_blankline").setup {
         filetype_exclude = { "alpha" },
@@ -140,6 +141,7 @@ end
 
 local startup = function(use)
   use 'wbthomason/packer.nvim'  -- https://github.com/wbthomason/packer.nvim
+  use 'lewis6991/impatient.nvim'  -- https://github.com/lewis6991/impatient.nvim
 
   lsp(use)
   completion(use)

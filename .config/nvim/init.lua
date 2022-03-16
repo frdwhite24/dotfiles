@@ -1,5 +1,6 @@
 require('initialize')
 require('settings')
+require('impatient')
 require('plugins')
 require('mappings')
 require('autocommands')
