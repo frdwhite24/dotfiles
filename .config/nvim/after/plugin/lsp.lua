@@ -1,7 +1,14 @@
 -- https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 -- https://github.com/jose-elias-alvarez/dotfiles
-local lspconfig = require('lspconfig')
-local null_ls = require("null-ls")
+local status_ok, lspconfig = pcall(require, "lspconfig")
+if not status_ok then
+	return
+end
+
+local status_ok, null_ls = pcall(require, "null_ls")
+if not status_ok then
+	return
+end
 
 local buf_map = function(bufnr, mode, lhs, rhs, opts)
   vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
@@ -10,6 +17,16 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
 end
 
 local on_attach = function(client, bufnr)
+  local signs = {
+    { name = "DiagnosticSignError", text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
+  }
+
+  for _, sign in ipairs(signs) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  end
   vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
   vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
   vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
@@ -34,6 +51,7 @@ local on_attach = function(client, bufnr)
   buf_map(bufnr, "i", "<C-x><C-x>", "<cmd> LspSignatureHelp<CR>")
   if client.resolved_capabilities.document_formatting then
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    -- TODO: set up proper import organising on save too
   end
 end
 
@@ -65,9 +83,9 @@ lspconfig.tsserver.setup({
     ts_utils.setup({})
     ts_utils.setup_client(client)
 
-    buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-    buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
-    buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+    buf_map(bufnr, "n", "gz", ":TSLspOrganize<CR>")
+    buf_map(bufnr, "n", "go", ":TSLspRenameFile<CR>")
+    buf_map(bufnr, "n", "gi", ":TSLspImportAll<CR>")
     on_attach(client, bufnr)
   end,
 })
@@ -86,7 +104,12 @@ null_ls.setup({
 lspconfig['pyright'].setup {}
 
 -- Rust language server
-require('rust-tools').setup({
+local status_ok, rust_tools = pcall(require, "rust_tools")
+if not status_ok then
+	return
+end
+
+rust_tools.setup({
   tools = {
     hover_with_actions = false,
     runnables = {

@@ -61,7 +61,10 @@ keymap('n', '<leader>fe', '<cmd>lua require(\'telescope.builtin\').git_status()<
 keymap('n', '<leader>fw', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>', opts)
 keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<CR>', opts)
 keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<CR>', opts)
+keymap('n', '<leader>fd', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>', opts)
+keymap('n', '<leader>ft', '<cmd>TodoTelescope<CR>', opts)
 keymap('n', '<leader>fc', '<cmd>lua require(\'fw.telescope\').search_config_nvim()<CR>', opts)
+keymap('n', '<leader>fo', [[<cmd>lua require('telescope.builtin').oldfiles()<cr>]], opts)
 
 -- Bufferline
 keymap('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<CR>', opts)
@@ -73,3 +76,7 @@ keymap('n', '<leader>6', '<cmd>BufferLineGoToBuffer 6<CR>', opts)
 keymap('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<CR>', opts)
 keymap('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<CR>', opts)
 keymap('n', '<leader>9', '<cmd>BufferLineGoToBuffer 9<CR>', opts)
+
+-- Editor support
+keymap('n', '<leader>b', '<cmd>ToggleAlternate<CR>', opts)
+keymap('n', '<leader>s', '<cmd>SymbolsOutline<CR>', opts)

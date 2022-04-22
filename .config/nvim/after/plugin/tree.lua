@@ -1,4 +1,9 @@
-require'nvim-tree'.setup {
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not status_ok then
+	return
+end
+
+nvim_tree.setup {
   open_on_setup        = false,
   auto_reload_on_write = true,
   update_focused_file = {
@@ -14,7 +19,7 @@ require'nvim-tree'.setup {
     width = 60,
     height = 30,
     hide_root_folder = true,
-    side = 'left',
+    side = 'right',
     number = false,
     relativenumber = true,
     signcolumn = "no"
